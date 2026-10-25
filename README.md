@@ -182,16 +182,6 @@ npx --yes lighthouse http://localhost:4174/ \
   --output=html --output-path=./lighthouse-report.html
 ```
 
-## Deploy
-
-O projeto é uma SPA estática. `netlify.toml` e `vercel.json` já configuram build e rewrite para `index.html` (necessário para rotas como `/checkout`). O build de demonstração usa `.env.production` com mocks ativos.
-
-**Netlify:** conecte o repositório ou arraste `dist` após `npm run build`; o rewrite está em `netlify.toml`.
-
-**Vercel:** importe o projeto; o rewrite está em `vercel.json`.
-
-**Qualquer host estático:** publique `dist` e configure fallback de SPA para `index.html`. Mantenha `mockServiceWorker.js` na raiz para a demo com MSW.
-
 ## Estrutura
 
 ```text
@@ -211,8 +201,6 @@ As regras de camadas, contratos REST, decisões de tempo real e desvios do Figma
 
 ## Escopo e limitações desta entrega
 
-- **Perfil e Carteiras:** as telas aguardam os prints; foram implementados apenas os dados, contratos, hooks e a seleção de carteira usados pelo checkout.
-- **Assets:** alguns ícones ainda serão adicionados pelo usuário; o checkout usa SVGs inline como fallback. As imagens dos NFTs foram otimizadas e os originais estão fora de `public`.
 - **"Usar outra carteira?":** clicável, mas sem ação por enquanto, conforme o escopo.
 - **Ações fora do escopo** (mercado, criadores, artigos, newsletter, login social etc.) avisam indisponibilidade; não fingem sucesso.
 - **Mobile:** o checkout implementa somente a parte da carteira, sem o formulário do colecionador.
