@@ -7,7 +7,7 @@ import { CartLink } from "@/features/cart/ui/components/cart-link";
 import { SearchField } from "@/features/nfts/ui/components/search-field";
 import { cn } from "@/lib/utils";
 
-const navItem = "border-b-2 border-transparent pb-1 text-small";
+const navItem = "border-b-2 border-transparent pb-3.5 lg:pt-4 text-small";
 const active = "border-primary font-bold text-primary";
 
 export function SiteHeader() {
@@ -18,9 +18,9 @@ export function SiteHeader() {
   const onHome = pathname === "/" || pathname === "/login" || pathname === "/register";
 
   return (
-    <header className="hidden border-b border-hairline border-primary lg:block">
-      <div className="mx-auto grid h-14 w-full max-w-[1200px] grid-cols-[1fr_auto_1fr] items-center xl:px-0">
-        <Link to="/" className="w-fit text-micro font-bold tracking-widest" aria-label="Kurio, página inicial">
+    <header className="hidden border-b border-b-primary lg:block border-b-hairline mx-20 lg:pt-2">
+      <div className="mx-auto grid h-14 w-full max-w-300 grid-cols-[1fr_auto_1fr] items-center xl:px-0">
+        <Link to="/" className="w-fit text-sm font-bold tracking-widest" aria-label="Kurio, página inicial">
           KURIO
         </Link>
 

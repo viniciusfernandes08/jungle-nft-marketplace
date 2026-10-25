@@ -16,7 +16,7 @@ export function HeaderAuthControl() {
       <Link
         to="/login"
         search={{ redirect: href }}
-        className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-small font-bold text-primary-foreground"
+        className="inline-flex items-center gap-2 rounded-[6px] bg-primary px-4 py-2 text-small font-bold text-primary-foreground"
       >
         <Icon name="login" className="size-4" /> Entrar
       </Link>
