@@ -14,13 +14,11 @@ type RowProps = {
   onRemove: (row: CartRowData) => void;
 };
 
-/** Não deixa subir além do estoque; se já passou dele, só permite diminuir. */
 function maxFor({ item, line }: CartRowData) {
   const limit = Math.min(line.available, MAX_QUANTITY_PER_ORDER);
   return limit >= item.quantity ? limit : item.quantity;
 }
 
-/** O total da linha acompanha a quantidade na hora; o resumo vem da cotação. */
 const lineTotal = ({ item, line }: CartRowData) => formatEth(mulEthByInt(line.unitPriceEth, item.quantity));
 
 function IssueNotice({ row, onQuantity }: { row: CartRowData; onQuantity: RowProps["onQuantity"] }) {
@@ -55,14 +53,13 @@ function RemoveButton({ row, onRemove }: Pick<RowProps, "row" | "onRemove">) {
   );
 }
 
-/** Desktop: uma <tr> por item. */
 export function CartTableRow({ row, onQuantity, onRemove }: RowProps) {
   const { item, line } = row;
   return (
     <tr className="bg-card">
-      <td className="p-2 align-middle">
+      <td className="align-middle">
         <div className="flex items-center gap-4">
-          <img src={line.imageUrl} alt="" width={70} height={70} loading="lazy" decoding="async" className="size-[70px] shrink-0 object-cover" />
+          <img src={line.imageUrl} alt="" width={70} height={70} loading="lazy" decoding="async" className="size-17.5 shrink-0 object-cover rounded-[6px]" />
           <div>
             <p className="text-body font-bold">{line.name}</p>
             <p className="text-small text-muted-foreground">

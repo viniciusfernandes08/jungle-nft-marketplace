@@ -35,7 +35,7 @@ export function CartSummary({ cart, quote, quoteError, refreshing, busy, onRetry
 
   return (
     <section aria-labelledby="resumo-titulo" className="flex flex-col gap-5">
-      <h2 id="resumo-titulo" className="border-b border-hairline border-primary pb-2 text-body font-bold">
+      <h2 id="resumo-titulo" className="border-b border-b-hairline border-b-primary pb-2 text-body font-bold">
         Resumo da carteira
       </h2>
 
@@ -76,7 +76,7 @@ export function CartSummary({ cart, quote, quoteError, refreshing, busy, onRetry
             </div>
             <p className="text-right text-micro text-primary">Taxa estimada</p>
           </div>
-          <div className={`${row} border-t border-hairline border-primary pt-3`}>
+          <div className={`${row} border-b-hairline border-b-primary pt-3`}>
             <dt className="text-small font-bold">Total</dt>
             <dd className="text-subheading font-bold text-primary">{formatEth(quote.totalEth)} ETH</dd>
           </div>

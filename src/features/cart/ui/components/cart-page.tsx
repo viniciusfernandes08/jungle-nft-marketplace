@@ -85,7 +85,6 @@ export function CartPage() {
     );
   }
 
-  // `isPending`/`isError` não estreitam `cartQuery.data` para o TypeScript.
   if (!cart) return null;
 
   if (cart.items.length === 0) {
@@ -118,7 +117,7 @@ export function CartPage() {
     <div className={shell}>
       {header}
 
-      <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1fr)_332px] lg:gap-[86px]">
+      <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1fr)_332px] lg:gap-21.5">
         <section aria-label="Itens do carrinho" aria-busy={quoteQuery.isFetching}>
           {!quote ? (
             quoteQuery.isError ? null : <CartRowsSkeleton count={cart.items.length} />
@@ -126,11 +125,11 @@ export function CartPage() {
             <>
               <table className="hidden w-full border-separate border-spacing-y-3 lg:table">
                 <caption className="sr-only">Itens do carrinho</caption>
-                <thead>
+                <thead className="">
                   <tr className="text-left text-small">
                     <th scope="col" className="px-2 pb-1 font-bold">NFTs</th>
                     <th scope="col" className="px-2 pb-1 font-bold">Preço</th>
-                    <th scope="col" className="px-2 pb-1 font-bold">Quantidade</th>
+                    <th scope="col" className="px-2 pb-1 font-bold">Edições</th>
                     <th scope="col" className="px-2 pb-1 font-bold">Total</th>
                     <th scope="col" className="px-2 pb-1"><span className="sr-only">Remover</span></th>
                   </tr>

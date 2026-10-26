@@ -93,10 +93,8 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
             })),
           });
         }
-        // As listagens não guardam o detalhe completo: invalida para refletir preço/estoque.
         void queryClient.invalidateQueries({ queryKey: nftKeys.lists() });
         void queryClient.invalidateQueries({ queryKey: nftKeys.facets() });
-        // A cotação do carrinho/checkout usa preço e estoque: refaz com os dados novos.
         void queryClient.invalidateQueries({ queryKey: ["quote"] });
       }),
     [queryClient],

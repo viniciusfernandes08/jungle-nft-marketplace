@@ -14,7 +14,6 @@ export function maxPurchasableQuantity(edition: NftEdition): number {
   return Math.max(0, Math.min(edition.available, MAX_QUANTITY_PER_ORDER));
 }
 
-/** Mantém a quantidade inteira e dentro de [min, limite da edição]. */
 export function clampQuantity(requested: number, edition: NftEdition): number {
   const max = maxPurchasableQuantity(edition);
   if (max === 0) return 0;

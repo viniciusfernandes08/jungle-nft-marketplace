@@ -6,7 +6,6 @@ import { useNftList } from "@/features/nfts/ui/hooks/use-nft-list";
 
 const QUERY = { ...DEFAULT_NFT_QUERY, pageSize: 12 };
 
-/** "Colecionadores também viram": NFTs que ainda não estão no carrinho. Só no desktop. */
 export function SuggestedNfts({ excludeIds }: { excludeIds: readonly string[] }) {
   const { data, isPending } = useNftList(QUERY);
   const items = useMemo(
@@ -18,7 +17,7 @@ export function SuggestedNfts({ excludeIds }: { excludeIds: readonly string[] })
 
   return (
     <section aria-labelledby="sugestoes-titulo" className="mt-16 hidden lg:block">
-      <h2 id="sugestoes-titulo" className="border-b border-hairline border-primary pb-3 text-body font-bold text-primary">
+      <h2 id="sugestoes-titulo" className="border-b border-b-hairline border-b-primary pb-3 text-body font-bold text-primary">
         Colecionadores também viram
       </h2>
       <div className="mt-6">

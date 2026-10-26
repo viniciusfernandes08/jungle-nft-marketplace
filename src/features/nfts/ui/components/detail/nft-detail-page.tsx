@@ -127,7 +127,7 @@ function NftDetailContent({ nft }: { nft: Nft }) {
               </p>
             </div>
 
-            <div className="hidden items-end justify-between gap-4 border-b border-hairline border-primary pb-2 lg:flex">
+            <div className="hidden items-end justify-between gap-4 border-b border-b-hairline border-b-primary pb-2 lg:flex">
               <p className="text-subheading font-bold text-primary">{formatEth(nft.priceEth)} ETH</p>
               <p className="flex items-center gap-2 text-small">
                 <RatingStars rating={nft.rating} />

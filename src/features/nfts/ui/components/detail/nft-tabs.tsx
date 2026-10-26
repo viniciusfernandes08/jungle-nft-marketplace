@@ -21,7 +21,7 @@ export function NftTabs({ nft }: { nft: Nft }) {
 
   return (
     <section className="mt-12 lg:mt-16">
-      <div role="tablist" aria-label="Informações do NFT" onKeyDown={onKeyDown} className="flex flex-wrap gap-x-8 border-b border-hairline border-primary">
+      <div role="tablist" aria-label="Informações do NFT" onKeyDown={onKeyDown} className="flex flex-wrap gap-x-8 border-b border-b-hairline border-b-primary">
         {tabs.map((tab) => (
           <button
             key={tab.id}

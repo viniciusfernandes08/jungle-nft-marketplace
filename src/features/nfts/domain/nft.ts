@@ -7,7 +7,6 @@ export type Collection = { id: string; name: string };
 
 export type NftEdition = {
   id: string;
-  /** "1/1", "1/10", "1/50" ou "ABERTA". O preço é o do NFT; a edição define a disponibilidade. */
   label: string;
   available: number;
 };

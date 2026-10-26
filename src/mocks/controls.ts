@@ -5,9 +5,7 @@ import { getScenarioName, setScenario, type ScenarioName } from "./scenarios";
 export type KurioMocks = {
   scenario: () => ScenarioName;
   setScenario: (name: ScenarioName) => void;
-  /** Aumenta o preço da primeira NFT do catálogo para exercitar a revalidação. */
   increasePrice: () => Promise<string | undefined>;
-  /** Restaura o banco do seed e volta ao cenário default. */
   reset: () => Promise<void>;
 };
 

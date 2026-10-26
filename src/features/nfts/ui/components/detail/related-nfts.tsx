@@ -17,7 +17,7 @@ export function RelatedNfts({ nft }: { nft: Nft }) {
 
   return (
     <section aria-labelledby="related-title" className="mt-14 lg:mt-20">
-      <h2 id="related-title" className="border-b border-hairline border-primary pb-3 text-body font-bold text-primary">
+      <h2 id="related-title" className="border-b border-b-hairline border-b-primary pb-3 text-body font-bold text-primary">
         Mais desta coleção
       </h2>
       <div className="mt-6">
