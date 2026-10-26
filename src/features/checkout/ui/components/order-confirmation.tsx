@@ -20,7 +20,6 @@ type FrameProps = {
   children: ReactNode;
 };
 
-/** Estrutura do recibo: modal no desktop, tela cheia no mobile, com barra inferior. */
 function ConfirmationFrame({ onClose, children }: FrameProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const onCloseRef = useRef(onClose);
@@ -66,7 +65,7 @@ function ConfirmationFrame({ onClose, children }: FrameProps) {
           <CloseIcon className="size-5" />
         </button>
 
-        <div className="flex flex-1 flex-col px-5 pb-8 pt-10 lg:px-11 lg:pb-10 lg:pt-12">
+        <div className="flex flex-1 flex-col pb-8 pt-10 lg:pb-10 lg:pt-12">
           {children}
         </div>
 
@@ -108,7 +107,6 @@ function EmptyState({
   );
 }
 
-/** Rota de confirmação: restaura o pedido pelo id (refresh) e acompanha a confirmação. */
 export function OrderConfirmationScreen({ orderId }: { orderId: string }) {
   const navigate = useNavigate();
   const query = useOrder(orderId);
@@ -168,16 +166,16 @@ export function OrderConfirmation({ order, onClose }: Props) {
 
   return (
     <ConfirmationFrame onClose={onClose}>
-      <div className="flex flex-col items-center gap-3 text-center">
+      <div className="flex flex-col items-center gap-3 text-center px-11">
         <StatusSeal status={order.status} />
         <h1 id={TITLE_ID} className="text-subheading font-bold leading-tight">
           {title}
         </h1>
       </div>
 
-      <hr className="my-6 border-0 border-t border-primary/30" />
+      <hr className="my-6 border-0 border-t border-primary" />
 
-      <dl className="grid grid-cols-2 gap-4 text-left min-[440px]:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 text-left min-[440px]:grid-cols-4 px-6">
         <div className="min-w-0">
           <dt className="text-micro uppercase tracking-wider text-muted-foreground">
             ID da transação
@@ -204,13 +202,13 @@ export function OrderConfirmation({ order, onClose }: Props) {
             {walletProviderLabels[order.collector.walletType]}
           </dd>
         </div>
-      </dl>
+      </div>
 
-      <hr className="my-6 border-0 border-t border-primary/30" />
+      <hr className="my-6 border-0 border-t border-primary" />
 
-      <h2 className="text-small font-bold">Detalhes da transação</h2>
+      <h2 className="text-small font-bold px-6">Detalhes da transação</h2>
 
-      <div className="mt-3">
+      <div className="mt-3 px-6">
         <div className="grid grid-cols-[minmax(0,1fr)_64px_88px] gap-2 border-b border-primary/30 pb-2 text-micro uppercase tracking-wider text-muted-foreground">
           <span>NFTs</span>
           <span className="text-center">Edições</span>
@@ -249,7 +247,7 @@ export function OrderConfirmation({ order, onClose }: Props) {
         </ul>
       </div>
 
-      <div className="ml-auto mt-4 flex w-full max-w-[260px] flex-col gap-2 border-t border-primary/30 pt-3">
+      <div className="mt-4 flex flex-col gap-2 border-b border-b-primary/30 py-3 mx-6">
         <div className="flex items-baseline justify-between gap-3">
           <span className="text-small">Taxa de rede</span>
           <span className="text-small">{formatEth(order.networkFeeEth)} ETH</span>
@@ -260,15 +258,15 @@ export function OrderConfirmation({ order, onClose }: Props) {
         </div>
       </div>
 
-      <p className="mt-5 text-center text-small text-muted-foreground">{message}</p>
+      <p className="mt-5 text-center text-small text-muted-foreground px-6">{message}</p>
 
-      <div className="mt-auto pt-8">
+      <div className="flex mt-auto pt-8 px-6 justify-center">
         {confirmed && explorer && order.explorerUrl ? (
           <a
             href={order.explorerUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex w-full items-center justify-center rounded-lg bg-primary py-3 text-small font-bold text-primary-foreground"
+            className="flex items-center justify-center rounded-[5px] bg-primary py-3 px-4 text-small font-bold text-primary-foreground"
           >
             Ver no {explorer}
           </a>
@@ -276,7 +274,7 @@ export function OrderConfirmation({ order, onClose }: Props) {
           <button
             type="button"
             disabled
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-small font-bold text-primary-foreground opacity-60"
+            className="flex items-center justify-center gap-2 rounded-lg bg-primary py-3 px-4 text-small font-bold text-primary-foreground opacity-60"
           >
             <Spinner className="size-3 border-2 text-primary-foreground" />
             Aguardando confirmação
@@ -285,7 +283,7 @@ export function OrderConfirmation({ order, onClose }: Props) {
           <button
             type="button"
             onClick={onClose}
-            className="w-full rounded-lg bg-primary py-3 text-small font-bold text-primary-foreground"
+            className="rounded-lg bg-primary py-3 px-4 text-small font-bold text-primary-foreground"
           >
             Voltar ao carrinho
           </button>

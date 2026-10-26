@@ -64,7 +64,6 @@ export function Spinner({ className }: { className?: string }) {
   );
 }
 
-/** Selo do recibo: envelope no sucesso, ampulheta no pendente e X no recusado. */
 export function StatusSeal({ status }: { status: "confirmed" | "pending" | "declined" }) {
   const label = status === "confirmed" ? "THANK YOU" : status === "pending" ? "PROCESSANDO" : "NÃO CONCLUÍDO";
   const color = status === "declined" ? "text-destructive" : "text-[#c27f46]";
