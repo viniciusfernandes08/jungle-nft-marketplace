@@ -361,7 +361,7 @@ export function DesktopCheckout({
           >
             <span
               aria-hidden="true"
-              className="size-4 shrink-0 rounded-full border border-muted-foreground"
+              className="size-4 shrink-0 rounded-full border-2 border-primary"
             />
             Usar outra carteira?
           </button>

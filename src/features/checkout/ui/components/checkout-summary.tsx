@@ -49,7 +49,7 @@ export function CheckoutSummary({ quote, quoteError, refreshing, onRetry }: Prop
         </div>
       ) : (
         <div aria-busy={refreshing} className={refreshing ? "opacity-60" : undefined}>
-          <div className="flex items-baseline justify-between border-b border-hairline border-primary/40 pb-1 text-micro text-muted-foreground">
+          <div className="flex items-baseline justify-between border-b border-b-hairline border-b-primary/40 pb-1 text-foreground">
             <span>NFTs</span>
             <span>Subtotal</span>
           </div>
@@ -58,13 +58,13 @@ export function CheckoutSummary({ quote, quoteError, refreshing, onRetry }: Prop
             {quote.lines.map((line) => (
               <li
                 key={`${line.nftId}:${line.editionId}`}
-                className="grid grid-cols-[48px_minmax(0,1fr)_auto] items-center gap-3"
+                className="grid grid-cols-[48px_minmax(0,1fr)_auto] items-center gap-3 bg-popover pr-4 pl-0.5"
               >
                 <img
                   src={line.imageUrl}
                   alt=""
-                  width={48}
-                  height={48}
+                  width={52}
+                  height={52}
                   loading="lazy"
                   decoding="async"
                   className="size-12 rounded-md bg-secondary object-cover"
@@ -81,9 +81,9 @@ export function CheckoutSummary({ quote, quoteError, refreshing, onRetry }: Prop
             ))}
           </ul>
 
-          <p className="mt-4 text-small">
+          <p className="mt-4 text-small text-foreground">
             Tem um código promocional?{" "}
-            <Link to="/cart" className="text-primary underline">
+            <Link to="/cart" className="text-foreground underline">
               Aplique aqui
             </Link>
           </p>
@@ -104,9 +104,9 @@ export function CheckoutSummary({ quote, quoteError, refreshing, onRetry }: Prop
                 <dt className="text-small">Taxa de rede</dt>
                 <dd className="text-body">{formatEth(quote.networkFeeEth)} ETH</dd>
               </div>
-              <p className="text-right text-micro text-primary">Taxa estimada</p>
+              <p className="text-center text-[12px] text-primary pt-2">Taxa estimada</p>
             </div>
-            <div className={`${row} border-t border-hairline border-primary pt-3`}>
+            <div className={`${row} border-t border-t-hairline border-t-primary pt-3`}>
               <dt className="text-small font-bold">Total</dt>
               <dd className="text-subheading font-bold text-primary">
                 {formatEth(quote.totalEth)} ETH

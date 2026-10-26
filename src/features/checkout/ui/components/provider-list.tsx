@@ -61,15 +61,9 @@ export function ProviderList({
 
   return (
     <section aria-labelledby="providers-title" className="flex flex-col gap-2.5">
-      <h3 id="providers-title" className="text-small font-bold">
+      <h3 id="providers-title" className="font-bold text-center">
         Carteira e rede
       </h3>
-
-      {!compact && (
-        <p className="text-micro uppercase tracking-[0.14em] text-muted-foreground">
-          METAMASK · WALLETCONNECT · COINBASE
-        </p>
-      )}
 
       <div role="radiogroup" aria-label="Provedor da carteira" className="flex flex-col gap-2">
         {providerOrder.map((id) => {
@@ -85,7 +79,7 @@ export function ProviderList({
                 if (active.status === "refused" || active.status === "idle") onRetry();
               }}
               className={cn(
-                "flex min-h-11 w-full items-center gap-3 rounded-lg border px-3 py-2 text-left transition-colors",
+                "flex min-h-11 w-full items-center gap-3 rounded-[3px] border px-3 py-2 text-left transition-colors",
                 selected
                   ? "border-primary bg-secondary/50"
                   : "border-primary/20 bg-transparent hover:border-primary/50",
