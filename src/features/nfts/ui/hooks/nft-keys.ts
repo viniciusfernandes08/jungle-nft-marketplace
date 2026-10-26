@@ -1,6 +1,5 @@
 import type { NftListQuery } from "../../domain/nft-query";
 
-/** A consulta inteira entra na chave: cada combinação de filtros tem seu próprio cache. */
 export const nftKeys = {
   all: ["nfts"] as const,
   lists: () => [...nftKeys.all, "list"] as const,

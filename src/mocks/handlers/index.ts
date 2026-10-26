@@ -10,7 +10,6 @@ import { socketHandlers } from "./socket.handler";
 import { walletConnectionHandlers } from "./wallet-connection.handler";
 import { walletHandlers } from "./wallets.handler";
 
-/** Handlers REST e WebSocket do MSW. */
 export const handlers: Array<RequestHandler | WebSocketHandler> = [
   ...authHandlers,
   ...nftHandlers,

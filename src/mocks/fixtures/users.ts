@@ -13,7 +13,6 @@ export async function hashPassword(password: string, salt: string): Promise<stri
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-/** Credenciais fictícias (documentadas no README). */
 export const SEED_PASSWORD = "Kurio@123";
 
 export async function buildSeedUsers(): Promise<MockUser[]> {

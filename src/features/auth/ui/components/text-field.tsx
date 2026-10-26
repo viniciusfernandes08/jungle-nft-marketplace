@@ -4,7 +4,6 @@ import { inputClass } from "./field-styles";
 
 type Props = ComponentProps<"input"> & { label: string; error?: string };
 
-/** O rótulo é lido por leitores de tela; visualmente o Figma usa só o placeholder. */
 export function TextField({ label, error, id, className, ...props }: Props) {
   const autoId = useId();
   const inputId = id ?? autoId;

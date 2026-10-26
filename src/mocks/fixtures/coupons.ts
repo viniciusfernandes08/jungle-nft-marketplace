@@ -2,7 +2,7 @@ import type { CouponStatus } from "@/features/cart/domain/quote";
 
 type Coupon = { status: Extract<CouponStatus, "applied" | "expired">; basisPoints: number };
 
-/** KURIO10 e GENESIS20 valem; EXPIRADO10 está vencido; qualquer outro código é inválido. */
+/** KURIO10 e GENESIS20 valem */
 const COUPONS: Record<string, Coupon> = {
   KURIO10: { status: "applied", basisPoints: 1000 },
   GENESIS20: { status: "applied", basisPoints: 2000 },

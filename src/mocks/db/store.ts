@@ -13,7 +13,6 @@ export type MockSession = { token: string; userId: string; expiresAt: string };
 
 export type MockQuoteRecord = {
   quote: Quote;
-  /** Presente quando a cotação foi feita por um usuário logado. */
   userId?: string;
   input: QuoteInput;
 };
@@ -23,7 +22,6 @@ export type MockOrderOutcome = "confirmed" | "declined" | "pending";
 export type MockOrderRecord = {
   userId: string;
   order: Order;
-  /** Resultado escolhido no momento da criação (o cenário pode mudar depois). */
   outcome: MockOrderOutcome;
   confirmAt: string;
 };
@@ -38,25 +36,17 @@ export type MockDb = {
   schemaVersion: number;
   users: MockUser[];
   sessions: MockSession[];
-  /** userId -> perfil do colecionador */
   profiles: Record<string, Profile>;
   nfts: Nft[];
-  /** userId -> ids de NFT favoritados */
   favorites: Record<string, string[]>;
-  /** userId -> carrinho da conta */
   carts: Record<string, Cart>;
-  /** userId -> carteiras cadastradas */
   wallets: Record<string, Wallet[]>;
-  /** quoteId -> cotação persistida (necessária para revalidar o pedido) */
   quotes: Record<string, MockQuoteRecord>;
-  /** orderId -> pedido + dono + desfecho simulado */
   orders: Record<string, MockOrderRecord>;
-  /** Idempotency-Key -> pedido criado */
   idempotency: Record<string, MockIdempotencyRecord>;
 };
 
 const STORAGE_KEY = "kurio:mock-db";
-/** Suba este número ao mudar o formato do banco; bancos antigos são descartados. */
 const SCHEMA_VERSION = 4;
 
 let cache: MockDb | null = null;
@@ -85,9 +75,7 @@ async function load(): Promise<MockDb> {
       const parsed = JSON.parse(raw) as MockDb;
       if (parsed.schemaVersion === SCHEMA_VERSION) return parsed;
     }
-  } catch {
-    // storage indisponível ou corrompido: recomeça do seed
-  }
+  } catch {}
   return createSeedDb();
 }
 
@@ -98,16 +86,12 @@ export async function getDb(): Promise<MockDb> {
   return cache;
 }
 
-/** Persiste para sobreviver a refresh. Chame após qualquer mutação. */
 export function saveDb(db: MockDb): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
-  } catch {
-    // sem persistência: o estado continua em memória
-  }
+  } catch {}
 }
 
-/** Restaura integralmente o estado conhecido do seed. */
 export async function resetDb(): Promise<MockDb> {
   cache = null;
   loading = null;

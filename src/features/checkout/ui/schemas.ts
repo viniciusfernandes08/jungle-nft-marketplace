@@ -4,7 +4,6 @@ import { networkIds } from "@/shared/domain/network";
 
 const email = z.string().trim().pipe(z.email("Informe um e-mail válido."));
 
-/** O formulário guarda o rótulo do ENS; o sufixo `.eth` é fixo e entra na hora de enviar. */
 const ensLabel = z
   .string()
   .trim()

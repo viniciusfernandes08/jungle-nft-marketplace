@@ -20,7 +20,6 @@ export default defineConfig({
   },
   server: {
     watch: {
-      // Relatórios são gerados no root e não fazem parte do app: evitar full reload no dev.
       ignored: ["**/playwright-report/**", "**/test-results/**", "**/lighthouse-report*.html"],
     },
   },

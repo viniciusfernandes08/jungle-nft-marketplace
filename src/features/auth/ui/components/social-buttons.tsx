@@ -4,7 +4,6 @@ import { socialLoginIcons } from "@/config/assets";
 const base =
   "flex w-full items-center justify-center gap-3 rounded-md border border-primary/30 px-4 py-3 text-micro font-medium text-muted-foreground lg:rounded-sm";
 
-/** Login social está fora do escopo: os botões avisam em vez de fingir sucesso. */
 export function SocialButtons() {
   return (
     <div className="flex flex-col gap-3">

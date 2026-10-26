@@ -9,10 +9,6 @@ declare module "@tanstack/react-query" {
 
 const MAX_RETRIES = 2;
 
-/**
- * Repete só falhas transitórias (rede, timeout, 5xx, 408, 429), já classificadas pela infra.
- * Erros determinísticos (validação, 401, 403, 404, 409) e bugs não são repetidos.
- */
 function shouldRetry(failureCount: number, error: unknown) {
   if (failureCount >= MAX_RETRIES) return false;
   return isDomainError(error) && isRetryable(error);
@@ -28,8 +24,6 @@ export const queryClient = new QueryClient({
       refetchOnWindowFocus: true,
       refetchOnReconnect: true,
     },
-    // Mutations nunca são repetidas automaticamente: evita operação duplicada.
-    // Pedidos usam chave de idempotência e retry explícito, decidido pela feature.
     mutations: { retry: 0 },
   },
 });

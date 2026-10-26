@@ -81,7 +81,6 @@ export function CartTableRow({ row, onQuantity, onRemove }: RowProps) {
   );
 }
 
-/** Mobile: um card por item. */
 export function CartListItem({ row, onQuantity, onRemove }: RowProps) {
   const { item, line } = row;
   return (

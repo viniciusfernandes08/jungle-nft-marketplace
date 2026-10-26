@@ -11,9 +11,7 @@ type Props = {
   cart: Cart;
   quote: Quote | undefined;
   quoteError: unknown;
-  /** Cotação em andamento: mostra o resumo anterior esmaecido. */
   refreshing: boolean;
-  /** Mutação em andamento (quantidade/remoção): impede finalizar com dados antigos. */
   busy: boolean;
   onRetry: () => void;
 };

@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useCartCount } from "./hooks/use-cart";
 
-/** Provisório até a leva do carrinho: confirma que os itens chegaram. */
 export function CartPageStub() {
   const count = useCartCount();
   return (

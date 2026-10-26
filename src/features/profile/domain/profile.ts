@@ -1,7 +1,3 @@
-/**
- * Dados do colecionador exibidos em "Meu perfil".
- * `id` é o id do usuário dono do perfil.
- */
 export type Profile = {
   id: string;
   displayName: string;

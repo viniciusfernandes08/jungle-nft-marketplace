@@ -3,7 +3,6 @@ import type { MockUser } from "./users";
 
 const SEEDED_AT = "2026-01-15T12:00:00.000Z";
 
-/** Perfis de teste; os mesmos nomes usados nas credenciais documentadas. */
 export function buildSeedProfiles(): Record<string, Profile> {
   return {
     "user-ana": {
@@ -34,7 +33,6 @@ function usernameFromEmail(email: string): string {
   return base.slice(0, 30);
 }
 
-/** Perfil inicial de uma conta recém-criada. */
 export function createProfileForUser(user: MockUser): Profile {
   return {
     id: user.id,

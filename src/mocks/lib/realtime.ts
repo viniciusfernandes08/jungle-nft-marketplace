@@ -13,7 +13,6 @@ export function removeRealtimeClient(client: RealtimeClient): void {
   clients.delete(client);
 }
 
-/** Entrega o evento a todas as conexões abertas. O cliente filtra por usuário/versão. */
 export function broadcastRealtime(event: RealtimeEvent): void {
   for (const client of clients) {
     try {
@@ -24,7 +23,6 @@ export function broadcastRealtime(event: RealtimeEvent): void {
   }
 }
 
-/** Tempo entre a criação do pedido e o desfecho simulado da carteira/rede. */
 export const ORDER_CONFIRM_DELAY_MS = 1800;
 
 export function scheduleOrderFinalization(
@@ -36,7 +34,6 @@ export function scheduleOrderFinalization(
   }, delayMs);
 }
 
-/** Recuperação por REST: se o timeout do mock se perdeu num refresh, o GET conclui o pedido. */
 export async function maybeFinalizeOrder(orderId: string): Promise<void> {
   const db = await getDb();
   const record = db.orders[orderId];
@@ -45,10 +42,6 @@ export async function maybeFinalizeOrder(orderId: string): Promise<void> {
   await finalizeOrder(orderId);
 }
 
-/**
- * Fecha o pedido uma única vez. Confirmado baixa o estoque e limpa as linhas compradas do carrinho;
- * recusado mantém tudo como estava. Emite order.updated e, se confirmado, nft.updated.
- */
 export async function finalizeOrder(orderId: string): Promise<void> {
   const db = await getDb();
   const record = db.orders[orderId];

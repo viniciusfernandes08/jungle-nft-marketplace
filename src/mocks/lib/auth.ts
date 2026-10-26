@@ -6,7 +6,6 @@ export type AuthOutcome =
   | { ok: true; user: MockUser; token: string }
   | { ok: false; reason: "unauthorized" | "expired" };
 
-/** Lê o Bearer token e resolve o usuário da sessão, se válida. */
 export async function authenticate(request: Request): Promise<AuthOutcome> {
   const header = request.headers.get("authorization");
   const token = header?.startsWith("Bearer ") ? header.slice(7) : null;

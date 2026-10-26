@@ -15,7 +15,6 @@ export const collections: Collection[] = [
   { id: "utilidade", name: "Utilidade" },
 ];
 
-// Arquivos esperados em /public/images/nfts (os mesmos 4 do Figma se repetem)
 const IMG = {
   emerald: "/images/nfts/emerald-ape.jpg",
   sage: "/images/nfts/sage-nomad.jpg",
@@ -25,7 +24,6 @@ const IMG = {
 
 type Base = { name: string; price: string; original?: string; image: string; network: NetworkId };
 
-// Os 9 primeiros seguem a ordem do Figma; o resto é gerado para exercitar filtros e paginação.
 const FROM_FIGMA: Base[] = [
   { name: "Emerald Ape #042", price: "1.19", image: IMG.emerald, network: "ethereum" },
   { name: "Sage Nomad #009", price: "1.69", image: IMG.sage, network: "polygon" },
@@ -55,7 +53,7 @@ export function buildNfts(): Nft[] {
 
   const bases: Base[] = [...FROM_FIGMA];
   for (let i = FROM_FIGMA.length; i < 36; i++) {
-    const cents = 20 + Math.floor(rand() * 1180); // 0.20 a 12.00 ETH
+    const cents = 20 + Math.floor(rand() * 1180);
     bases.push({
       name: `${pick(ADJECTIVES)} ${pick(NOUNS)} #${String(100 + Math.floor(rand() * 900))}`,
       price: weiToEth(BigInt(cents) * 10n ** 16n),
@@ -69,9 +67,6 @@ export function buildNfts(): Nft[] {
     const first = index === 0;
     const soldOut = index === 7; // um NFT esgotado para o cenário de edição indisponível
     const editionCount = first ? 4 : 1 + Math.floor(rand() * 4);
-    // O print do checkout compra 6 de Violet Nomad e 9 de Ivory Baron:
-    // essas duas obras precisam de uma edição com estoque suficiente no mock.
-    // O rand é consumido mesmo assim para não deslocar a geração das obras seguintes.
     const printCart = index === 4 || index === 5;
     const editions: NftEdition[] = Array.from({ length: editionCount }, (_, n) => {
       const rolled = soldOut || first ? 0 : Math.floor(rand() * 9);

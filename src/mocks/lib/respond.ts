@@ -8,7 +8,6 @@ export function apiError(status: number, code: string, message: string, fieldErr
   return HttpResponse.json(body, { status });
 }
 
-/** Aplica latência e falhas do cenário ativo antes do handler real. */
 export function withScenario(
   resolver: HttpResponseResolver<PathParams, DefaultBodyType, DefaultBodyType>,
 ): HttpResponseResolver<PathParams, DefaultBodyType, DefaultBodyType> {
@@ -30,7 +29,6 @@ export function withScenario(
   };
 }
 
-/** Lê e valida o corpo JSON; em caso de erro devolve a resposta 422 pronta. */
 export async function readJson<T>(
   request: Request,
   schema: z.ZodType<T>,

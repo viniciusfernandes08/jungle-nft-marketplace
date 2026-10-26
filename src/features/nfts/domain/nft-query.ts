@@ -26,7 +26,6 @@ export const DEFAULT_NFT_QUERY: NftListQuery = {
   pageSize: 9,
 };
 
-/** Qualquer mudança de filtro, busca, aba ou ordenação reinicia a paginação. */
 export function applyFilterChange(
   query: NftListQuery,
   patch: Partial<Omit<NftListQuery, "page">>,

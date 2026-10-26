@@ -4,29 +4,21 @@ import type { WalletProviderId } from "@/features/wallets/domain/wallet";
 
 export type OrderStatus = "pending" | "confirmed" | "declined";
 
-/**
- * Snapshot dos dados informados no "Perfil do colecionador".
- * Não é o perfil da conta: vale só para este pedido (não é salvo no perfil).
- * A carteira de pagamento é escolhida à parte e vive nos campos do Order.
- */
 export type Collector = {
   displayName: string;
   username: string;
   profileName: string;
   email: string;
-  /** Nome ENS completo, incluindo o sufixo ".eth". */
   ensName: string;
   network: NetworkId;
   walletAddress: string;
   walletType: WalletProviderId;
   referralCode?: string;
-  /** ENS ou endereço de uma carteira secundária. */
   secondaryAddress?: string;
   useAnotherWallet: boolean;
   note?: string;
 };
 
-/** Snapshot: alterações posteriores no catálogo não mudam o recibo. */
 export type OrderItem = {
   nftId: string;
   editionId: string;
@@ -50,12 +42,11 @@ export type Order = {
   networkFeeEth: EthString;
   totalEth: EthString;
   network: NetworkId;
-  /** Carteira usada no pagamento (cadastrada no perfil). */
   walletAddress: string;
   walletLabel?: string;
   collector: Collector;
-  transactionRef?: string; // simulado
-  explorerUrl?: string; // simulado
+  transactionRef?: string;
+  explorerUrl?: string;
   declineReason?: string;
   createdAt: string;
   updatedAt: string;

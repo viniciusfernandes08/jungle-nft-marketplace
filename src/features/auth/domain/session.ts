@@ -10,7 +10,6 @@ export type Session = {
   expiresAt: string; // ISO
 };
 
-/** `token` é credencial opaca; guardá-la é responsabilidade da infra. */
 export type AuthResult = {
   session: Session;
   token: string;

@@ -1,6 +1,5 @@
 import { env } from "@/config/env";
 
-/** Sobe o MSW antes do render quando VITE_ENABLE_MOCKS=true (dev, preview e demo). */
 export async function enableMocking() {
   if (!env.enableMocks) return;
   const [{ worker }, { exposeMockControls }, { applyScenarioFromUrl }] = await Promise.all([

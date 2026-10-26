@@ -9,7 +9,6 @@ type Props = {
   onApply: (range: { min?: string; max?: string }) => void;
 };
 
-/** Dois controles nativos sobrepostos: teclado e leitores de tela funcionam sem código extra. */
 export function PriceRange({ bounds, applied, onApply }: Props) {
   const [low, setLow] = useState(applied.min ?? bounds.min);
   const [high, setHigh] = useState(applied.max ?? bounds.max);

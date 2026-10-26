@@ -10,10 +10,6 @@ type Props = {
   onSwap: () => void;
 };
 
-/**
- * Cartões de carteira do checkout mobile. O menu de opções ainda não existe
- * nesta versão: avisa e não finge abrir nada.
- */
 export function WalletCards({ wallets, selectedId, onSelect, onSwap }: Props) {
   const announce = useAnnounce();
 

@@ -6,7 +6,6 @@ import { cartKeys, useCartScope } from "./use-cart";
 
 const MUTATION_KEY = ["cart", "line"] as const;
 
-/** Só reconcilia com a API quando a última mutação termina (evita piscar em cliques rápidos). */
 function settle(queryClient: QueryClient, key: readonly unknown[]) {
   if (queryClient.isMutating({ mutationKey: MUTATION_KEY }) === 1) {
     void queryClient.invalidateQueries({ queryKey: key });
@@ -17,7 +16,6 @@ function useCartKey() {
   return cartKeys.scope(useCartScope() ?? "guest");
 }
 
-/** Atualização otimista da quantidade, com rollback e aviso se a API recusar (ex.: sem estoque). */
 export function useUpdateCartItem() {
   const queryClient = useQueryClient();
   const announce = useAnnounce();
@@ -68,7 +66,6 @@ export function useRemoveCartItem() {
   });
 }
 
-/** Só persiste o cupom se a cotação o aceitar; caso contrário devolve o status para a tela. */
 export function useApplyCoupon() {
   const queryClient = useQueryClient();
   const key = useCartKey();

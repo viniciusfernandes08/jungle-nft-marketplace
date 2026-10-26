@@ -26,7 +26,6 @@ export type Failure =
   | { type: "http"; status: number; code: string; message: string };
 
 export type Scenario = {
-  /** Latência em ms, em função do índice da requisição (determinístico). */
   latencyMs: (requestIndex: number) => number;
   fail?: (request: RequestInfo) => Failure | null;
   emptyCatalog?: boolean;
@@ -40,7 +39,6 @@ export const scenarios: Record<ScenarioName, Scenario> = {
   default: { latencyMs: fixed(DEFAULT_LATENCY) },
   empty: { latencyMs: fixed(DEFAULT_LATENCY), emptyCatalog: true },
   slow: { latencyMs: fixed(2500) },
-  // Alterna lenta/rápida: a 1ª requisição responde depois da 2ª (respostas fora de ordem)
   "variable-latency": {
     latencyMs: (n) => [1800, 150, 900, 80, 1400][n % 5],
   },
@@ -69,7 +67,6 @@ export const scenarios: Record<ScenarioName, Scenario> = {
         ? { type: "http", status: 401, code: "SESSION_EXPIRED", message: "Sua sessão expirou." }
         : null,
   },
-  // Favoritar/desfavoritar falha: exercita rollback da atualização otimista
   "favorite-error": {
     latencyMs: fixed(DEFAULT_LATENCY),
     fail: (r) =>
@@ -77,7 +74,6 @@ export const scenarios: Record<ScenarioName, Scenario> = {
         ? { type: "http", status: 500, code: "INTERNAL_ERROR", message: "Erro interno do servidor." }
         : null,
   },
-  // A cotação falha: o resumo do carrinho mostra o erro e permite tentar de novo
   "quote-error": {
     latencyMs: fixed(DEFAULT_LATENCY),
     fail: (r) =>
@@ -92,11 +88,8 @@ export const scenarios: Record<ScenarioName, Scenario> = {
         ? { type: "http", status: 403, code: "FORBIDDEN", message: "Você não tem permissão." }
         : null,
   },
-  // A carteira recusa a conexão; o checkout oferece tentar de novo/trocar de provedor.
   "wallet-refused": { latencyMs: fixed(DEFAULT_LATENCY) },
-  // O pedido é aceito e depois recusado na confirmação (evento order.updated).
   "order-declined": { latencyMs: fixed(DEFAULT_LATENCY) },
-  // O pedido fica pendente para exercitar o estado de processamento e o polling.
   "order-pending": { latencyMs: fixed(DEFAULT_LATENCY) },
 };
 
@@ -107,9 +100,7 @@ export function getScenarioName(): ScenarioName {
   try {
     const stored = localStorage.getItem(SCENARIO_KEY);
     if (stored && (scenarioNames as readonly string[]).includes(stored)) return stored as ScenarioName;
-  } catch {
-    // ignora
-  }
+  } catch {}
   return "default";
 }
 
@@ -121,16 +112,13 @@ export function setScenario(name: ScenarioName): void {
   requestCounter = 0;
   try {
     localStorage.setItem(SCENARIO_KEY, name);
-  } catch {
-    // ignora
-  }
+  } catch {}
 }
 
 export function nextRequestIndex(): number {
   return requestCounter++;
 }
 
-/** Permite abrir o app já num cenário: `/?scenario=slow`. */
 export function applyScenarioFromUrl(): void {
   const name = new URLSearchParams(window.location.search).get("scenario");
   if (name && (scenarioNames as readonly string[]).includes(name)) setScenario(name as ScenarioName);

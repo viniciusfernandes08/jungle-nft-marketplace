@@ -40,7 +40,6 @@ type RetryAttempt = {
   key: string;
 };
 
-/** Rota /checkout: sem pedido mostra o pagamento; com ?order= restaura o recibo. */
 export function CheckoutPage({ orderId }: { orderId?: string }) {
   if (orderId) return <OrderConfirmationScreen orderId={orderId} />;
   return <CheckoutFlow />;
@@ -86,7 +85,6 @@ function CheckoutFlow() {
   const selectedWallet = wallets.find((wallet) => wallet.id === selectedWalletId);
   const cart = cartQuery.data;
 
-  // Mobile: a carteira com ENS (a "Reserva" do print) é a padrão.
   useEffect(() => {
     if (!session || isDesktop || initializedMobileRef.current || wallets.length === 0) return;
     initializedMobileRef.current = true;
@@ -101,7 +99,6 @@ function CheckoutFlow() {
     connectRef.current(nextProvider);
   }, [session, isDesktop, wallets]);
 
-  // Desktop: a conexão começa em MetaMask, sem carteira escolhida (como no print).
   useEffect(() => {
     if (!session || !isDesktop || initializedDesktopRef.current) return;
     initializedDesktopRef.current = true;
@@ -164,10 +161,6 @@ function CheckoutFlow() {
     };
   }
 
-  /**
-   * Cria o pedido. A chave de idempotência é única por tentativa; numa falha
-   * transitória ela é guardada junto do payload para ser repetida sem duplicar.
-   */
   async function createOrder(input: CreateOrderInput, key: string, signature: string) {
     try {
       const order = await container.orders.create(input, key);
@@ -186,10 +179,6 @@ function CheckoutFlow() {
     }
   }
 
-  /**
-   * Revalida a cotação antes de comprar. Se o total/itens mudaram, exige confirmação
-   * explícita; se o servidor recusar por corrida, atualiza e reabre a revisão.
-   */
   async function submitOrder(
     collector: Collector,
     walletId: string,

@@ -8,7 +8,6 @@ import { getScenarioName } from "../scenarios";
 
 const connectSchema = z.object({ providerId: z.enum(walletProviderIds) });
 
-/** Simulação de conexão: o cenário "wallet-refused" faz a carteira recusar. */
 export const walletConnectionHandlers = [
   http.post(
     "/api/wallet-connection/connect",

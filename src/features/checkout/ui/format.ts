@@ -2,7 +2,6 @@ import { networkLabels, type NetworkId } from "@/shared/domain/network";
 
 const MONTHS = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
-/** Como a rede aparece nos cards mobile e no recibo. */
 export function networkDisplay(network: NetworkId): string {
   return network === "ethereum" ? "Rede principal Ethereum" : `Rede ${networkLabels[network]}`;
 }
@@ -11,13 +10,11 @@ export function explorerName(network: NetworkId): string {
   return network === "ethereum" ? "Etherscan" : network === "polygon" ? "Polygonscan" : "Solscan";
 }
 
-/** Formato do print: 29 Jul, 2026. */
 export function formatOrderDate(iso: string): string {
   const date = new Date(iso);
   return `${String(date.getDate()).padStart(2, "0")} ${MONTHS[date.getMonth()]}, ${date.getFullYear()}`;
 }
 
-/** 0xa91f...e82c vira 0xA91F...E82C. */
 export function shortenTransactionRef(ref: string): string {
   if (ref.length <= 12) return ref;
   return `${ref.slice(0, 2)}${ref.slice(2, 6).toUpperCase()}...${ref.slice(-4).toUpperCase()}`;

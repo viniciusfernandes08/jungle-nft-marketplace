@@ -25,7 +25,6 @@ export type QuoteLine = {
   available: number;
 };
 
-/** A cotação da API é a referência para finalizar o pedido. */
 export type Quote = {
   id: string;
   version: number;
@@ -40,7 +39,6 @@ export type Quote = {
   issues: QuoteIssue[];
 };
 
-/** A cotação recebe os itens, então serve para visitante e para usuário logado. */
 export type QuoteInput = {
   items: CartItem[];
   couponCode?: string;
@@ -58,7 +56,6 @@ export type QuoteTotals = {
   totalEth: EthString;
 };
 
-/** Cálculo local (ex.: UI otimista). O valor oficial sempre vem da API. */
 export function computeQuoteTotals(
   lines: readonly Pick<QuoteLine, "unitPriceEth" | "quantity">[],
   discountBasisPoints: number,
@@ -71,7 +68,6 @@ export function computeQuoteTotals(
   return { subtotalEth, discountEth, networkFeeEth, totalEth };
 }
 
-/** Verdadeiro se algo que o usuário confirmou deixou de valer. */
 export function hasQuoteChanged(confirmed: Quote, current: Quote): boolean {
   if (confirmed.totalEth !== current.totalEth) return true;
   if (current.issues.length > 0) return true;
@@ -93,7 +89,6 @@ export function couponErrorMessage(status: CouponStatus | undefined): string | u
   return undefined;
 }
 
-/** Texto do problema de uma linha da cotação. */
 export function describeIssue(issue: QuoteIssue, line: Pick<QuoteLine, "available">): string {
   switch (issue.code) {
     case "OUT_OF_STOCK":

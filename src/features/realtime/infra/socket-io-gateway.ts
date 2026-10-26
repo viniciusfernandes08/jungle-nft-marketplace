@@ -6,10 +6,6 @@ import type { ConnectionState, RealtimeGateway } from "@/features/realtime/domai
 /**
  * Gateway Socket.IO. Conecta direto em WebSocket para o MSW conseguir interceptar
  * (o fallback de polling do engine.io não é atendido pelo mock).
- *
- * `socket.io-client` é importado sob demanda: o engine.io-client captura
- * `globalThis.WebSocket` no topo do módulo. Se fosse importado junto com o app, essa
- * referência seria a WebSocket nativa, anterior ao patch do MSW, e o mock não veria a conexão.
  */
 export function createSocketIoRealtimeGateway(): RealtimeGateway {
   let socket: Socket | null = null;

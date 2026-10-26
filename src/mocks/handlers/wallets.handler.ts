@@ -81,10 +81,6 @@ function keepSinglePrimary(wallets: Wallet[], primaryId: string): void {
   }
 }
 
-/**
- * Uma conta nova não fica sem como pagar: o mock cadastra uma carteira
- * principal na primeira listagem, usando os dados do perfil quando existirem.
- */
 function ensureSeedWallet(wallets: Wallet[], user: MockUser, profile?: { displayName: string; email: string; walletNickname: string }): boolean {
   if (wallets.length > 0) return false;
   const bytes = crypto.getRandomValues(new Uint8Array(20));

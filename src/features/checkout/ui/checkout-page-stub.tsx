@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 
-/** Provisório até a etapa de Pagamento. Já é uma rota privada: exige sessão. */
 export function CheckoutPageStub() {
   return (
     <section className="mx-auto w-full max-w-[1200px] px-4 py-10 sm:px-6 xl:px-0">

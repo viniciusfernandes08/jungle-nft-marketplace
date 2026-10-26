@@ -13,7 +13,6 @@ type Props = {
   connection: WalletConnectionState;
   onRetry: () => void;
   onDisconnect: () => void;
-  /** Desktop: sem logos, com a legenda de provedores. Mobile: logos e radios à direita. */
   compact?: boolean;
 };
 
@@ -42,10 +41,6 @@ function Radio({ selected }: { selected: boolean }) {
   );
 }
 
-/**
- * Provedores simulados. A conexão é automática ao selecionar; recusa e queda
- * ficam visíveis e têm ação de nova tentativa/desconexão.
- */
 export function ProviderList({
   provider,
   onChange,

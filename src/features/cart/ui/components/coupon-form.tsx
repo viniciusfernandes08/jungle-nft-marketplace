@@ -5,7 +5,6 @@ import { useApplyCoupon, useRemoveCoupon } from "../hooks/use-cart-mutations";
 
 type Props = {
   appliedCode: string | undefined;
-  /** Status atual do cupom salvo, segundo a cotação (pode ter expirado depois). */
   appliedStatus: CouponStatus | undefined;
 };
 

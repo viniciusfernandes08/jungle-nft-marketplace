@@ -1,4 +1,3 @@
-/** PRNG com semente fixa (mulberry32): mesmos dados em toda execução. */
 export function createPrng(seed: number) {
   let state = seed >>> 0;
   return () => {

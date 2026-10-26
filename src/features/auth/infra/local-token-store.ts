@@ -14,16 +14,12 @@ export function createLocalTokenStore(): TokenStore {
     set(token) {
       try {
         localStorage.setItem(KEY, token);
-      } catch {
-        // sem persistência: a sessão vale só até o refresh
-      }
+      } catch {}
     },
     clear() {
       try {
         localStorage.removeItem(KEY);
-      } catch {
-        // ignora
-      }
+      } catch {}
     },
   };
 }

@@ -1,9 +1,5 @@
 import type { Wallet } from "@/features/wallets/domain/wallet";
 
-/**
- * Carteiras cadastradas dos usuários de teste.
- * "Principal" é a carteira EVM padrão; "Reserva" tem ENS e vive na Polygon.
- */
 export const seedWallets: Record<string, Wallet[]> = {
   "user-ana": [
     {

@@ -2,7 +2,6 @@ import { isEthString } from "@/shared/domain/eth";
 import { networkIds, type NetworkId } from "@/shared/domain/network";
 import { DEFAULT_NFT_QUERY, type NftListQuery, type NftSort, type NftTab } from "../domain/nft-query";
 
-/** Parâmetros da URL do catálogo. Valores padrão são omitidos para manter a URL limpa. */
 export type CatalogSearch = {
   q?: string;
   collection?: string[];
@@ -17,7 +16,6 @@ export type CatalogSearch = {
 const TABS: readonly NftTab[] = ["all", "new", "trending"];
 const SORTS: readonly NftSort[] = ["recent", "price-asc", "price-desc", "name"];
 
-// O parser do router converte "123" em número; aceitamos os dois formatos.
 function text(value: unknown): string | undefined {
   return typeof value === "string" || typeof value === "number" ? String(value) : undefined;
 }
@@ -40,7 +38,6 @@ export function compactSearch(search: CatalogSearch): CatalogSearch {
   return out;
 }
 
-/** Valida a URL: o que for inválido é descartado, nunca quebra a tela. */
 export function validateCatalogSearch(raw: Record<string, unknown>): CatalogSearch {
   const min = text(raw.min);
   const max = text(raw.max);
@@ -60,7 +57,6 @@ export function validateCatalogSearch(raw: Record<string, unknown>): CatalogSear
   });
 }
 
-/** Qualquer mudança de filtro reinicia a paginação. */
 export function patchSearch(
   prev: CatalogSearch,
   patch: Partial<Omit<CatalogSearch, "page">>,

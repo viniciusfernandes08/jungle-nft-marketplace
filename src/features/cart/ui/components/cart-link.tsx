@@ -3,7 +3,6 @@ import { Icon } from "@/components/icon";
 import { cn } from "@/lib/utils";
 import { useCartCount } from "../hooks/use-cart";
 
-/** Ícone do carrinho com a soma das quantidades. */
 export function CartLink({ className, iconClassName }: { className?: string; iconClassName?: string }) {
   const count = useCartCount();
   return (

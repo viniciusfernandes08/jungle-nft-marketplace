@@ -7,10 +7,6 @@ export const quoteKeys = {
   all: ["quote"] as const,
 };
 
-/**
- * Cotação do carrinho atual. A chave inclui os itens, o cupom e a rede, então cada alteração
- * gera uma nova consulta; a anterior é cancelada e o resumo anterior fica visível (esmaecido).
- */
 export function useCartQuote(network?: NetworkId) {
   const scope = useCartScope();
   const { data: cart } = useCart();

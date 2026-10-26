@@ -8,7 +8,6 @@ export const walletKeys = {
   list: (userId: string) => [...walletKeys.all, userId] as const,
 };
 
-/** Carteiras cadastradas do usuário. Só busca com sessão. */
 export function useWallets() {
   const { data: session } = useSession();
   const userId = session?.user.id;
@@ -19,20 +18,17 @@ export function useWallets() {
   });
 }
 
-/** Cadastra uma carteira e atualiza as listas afetadas. */
 export function useCreateWallet() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: container.wallets.create,
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: walletKeys.all });
-      // O apelido da principal pode ter sido sincronizado com o perfil.
       void queryClient.invalidateQueries({ queryKey: ["profile"] });
     },
   });
 }
 
-/** Edita uma carteira e atualiza as listas afetadas. */
 export function useUpdateWallet() {
   const queryClient = useQueryClient();
   return useMutation({

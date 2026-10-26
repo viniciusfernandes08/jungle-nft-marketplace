@@ -4,7 +4,6 @@ import { env } from "@/config/env";
 let tokenProvider: () => string | null = () => null;
 let unauthorizedHandler: ((code: string | undefined) => void) | undefined;
 
-/** Único cliente HTTP. Toda chamada REST da infra passa por aqui. */
 export const http = axios.create({
   baseURL: env.apiUrl,
   timeout: env.httpTimeoutMs,
@@ -20,7 +19,6 @@ http.interceptors.request.use((config) => {
 http.interceptors.response.use(
   (response) => response,
   (error: unknown) => {
-    // 401 numa requisição autenticada = sessão expirada/invalidada (exceto no próprio logout).
     if (
       isAxiosError<{ code?: string }>(error) &&
       error.response?.status === 401 &&

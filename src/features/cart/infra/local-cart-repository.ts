@@ -11,9 +11,7 @@ function read(): Cart {
   try {
     const parsed = JSON.parse(localStorage.getItem(KEY) ?? "null") as Cart | null;
     if (parsed && Array.isArray(parsed.items)) return parsed;
-  } catch {
-    // storage indisponível ou corrompido: começa vazio
-  }
+  } catch {}
   return empty();
 }
 
@@ -21,13 +19,10 @@ function write(cart: Cart): Cart {
   const next = { ...cart, updatedAt: new Date().toISOString() };
   try {
     localStorage.setItem(KEY, JSON.stringify(next));
-  } catch {
-    // sem persistência: o carrinho vale só até o refresh
-  }
+  } catch {}
   return next;
 }
 
-/** Carrinho do visitante no navegador. Disponibilidade real é validada na cotação. */
 export function createLocalCartRepository(): GuestCartRepository {
   return {
     get: async () => read(),
@@ -60,9 +55,7 @@ export function createLocalCartRepository(): GuestCartRepository {
     clear: () => {
       try {
         localStorage.removeItem(KEY);
-      } catch {
-        // ignora
-      }
+      } catch {}
     },
   };
 }

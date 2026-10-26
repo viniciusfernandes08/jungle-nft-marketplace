@@ -1,7 +1,6 @@
 import type { FieldValues, Path, UseFormSetError } from "react-hook-form";
 import type { DomainError } from "@/shared/domain/errors";
 
-/** Erros de campo vindos da API (ex.: e-mail já cadastrado) aparecem no próprio campo. */
 export function applyFieldErrors<T extends FieldValues>(
   error: DomainError,
   setError: UseFormSetError<T>,

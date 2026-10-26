@@ -21,11 +21,9 @@ export type NftDetails = {
 export type Nft = {
   id: string;
   name: string;
-  /** Categoria usada nos filtros (Arte digital, Fotografia...). */
   collectionId: string;
-  /** Série do criador exibida na página ("Kurio Apes"). */
   seriesName: string;
-  tokenId: string; // "0042"
+  tokenId: string;
   network: NetworkId;
   creator: string;
   summary: string;
@@ -34,13 +32,12 @@ export type Nft = {
   rating: number;
   ratingCount: number;
   priceEth: EthString;
-  originalPriceEth?: EthString; // preço riscado quando há desconto
+  originalPriceEth?: EthString;
   rarity: Rarity;
   imageUrl: string;
   gallery: string[];
   editions: NftEdition[];
   trending: boolean;
   listedAt: string; // ISO
-  /** Incrementa a cada mudança de preço/disponibilidade (usado pelo tempo real). */
   version: number;
 };

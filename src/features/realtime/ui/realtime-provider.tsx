@@ -8,10 +8,6 @@ import type { Order } from "@/features/orders/domain/order";
 import { orderKeys } from "@/features/orders/ui/hooks/order-keys";
 import { rememberEvent, shouldApplyEvent } from "../domain/event-rules";
 
-/**
- * Assina o canal em tempo real uma única vez por sessão.
- * Eventos privados de outro usuário e duplicatas/versões antigas são descartados.
- */
 export function RealtimeProvider({ children }: { children: ReactNode }) {
   const queryClient = useQueryClient();
   const { data: session } = useSession();
@@ -61,7 +57,6 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
           } else {
             void queryClient.invalidateQueries({ queryKey: key });
           }
-          // O carrinho muda quando o pedido é confirmado (as linhas compradas saem).
           void queryClient.invalidateQueries({ queryKey: ["cart"] });
           return;
         }

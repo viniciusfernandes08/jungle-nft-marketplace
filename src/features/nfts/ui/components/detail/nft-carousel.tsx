@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import type { Nft } from "../../../domain/nft";
 import { NftCard } from "../nft-card";
 
-/** Rolagem horizontal com snap e pontos de página. Sem autoplay; os cards são links focáveis. */
 export function NftCarousel({ items, label }: { items: Nft[]; label: string }) {
   const [view, setView] = useState({ page: 0, pages: 1 });
   const list = useRef<HTMLUListElement | null>(null);

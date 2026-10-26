@@ -5,7 +5,6 @@ import type { Nft } from "../domain/nft";
 import type { NftListQuery } from "../domain/nft-query";
 import type { NftFacets, NftRepository } from "../domain/nft-repository";
 
-/** Traduz a consulta do domínio nos parâmetros REST (arrays viram chaves repetidas). */
 export function toSearchParams(query: NftListQuery): URLSearchParams {
   const params = new URLSearchParams();
   if (query.search) params.set("search", query.search);

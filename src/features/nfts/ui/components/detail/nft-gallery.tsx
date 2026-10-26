@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { Icon } from "@/components/icon";
 import { cn } from "@/lib/utils";
 
-/** Miniaturas + imagem principal (+ zoom em <dialog> nativo). No mobile só a imagem principal. */
 export function NftGallery({ name, images }: { name: string; images: string[] }) {
   const [index, setIndex] = useState(0);
   const zoom = useRef<HTMLDialogElement>(null);

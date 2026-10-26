@@ -75,7 +75,6 @@ const realtime = createSocketIoRealtimeGateway();
 const login = makeLogin(authRepository, tokenStore);
 const register = makeRegister(authRepository, tokenStore);
 
-/** Após entrar, os itens do visitante passam para a conta. Se falhar, ficam guardados localmente. */
 const withGuestCartMerge = <I,>(authenticate: (input: I) => ReturnType<typeof login>) =>
   async (input: I) => {
     const session = await authenticate(input);

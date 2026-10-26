@@ -1,10 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { Icon } from "@/components/icon";
 
-/**
- * Modal do desktop com <dialog> nativo: foco preso, Esc fecha, fundo inerte.
- * Qualquer forma de fechar dispara `onClose` (que volta para a página anterior).
- */
 export function AuthDialog({ children, onClose }: { children: ReactNode; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
 

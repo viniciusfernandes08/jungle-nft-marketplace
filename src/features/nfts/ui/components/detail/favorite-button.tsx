@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 
 type Props = { nftId: string; variant: "button" | "icon"; className?: string };
 
-/** Sem sessão leva ao login e volta para esta página; com sessão alterna com atualização otimista. */
 export function FavoriteButton({ nftId, variant, className }: Props) {
   const { data: session } = useSession();
   const { data: favorites } = useFavorites();

@@ -40,7 +40,6 @@ type WalletFormProps = {
   wallet: Wallet | null;
   kind: WalletKind;
   fallback: FallbackProfile;
-  /** Dados da principal usados quando "Igual à carteira principal" está marcado. */
   sameAsPrimary?: Wallet | null;
   onSaved: (wallet: Wallet) => void;
   onCancel?: () => void;

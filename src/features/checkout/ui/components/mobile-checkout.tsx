@@ -48,10 +48,6 @@ function BackIcon() {
   );
 }
 
-/**
- * Checkout mobile: a carteira é o único dado editável; o restante do colecionador
- * vem da sessão e é enviado como snapshot do pedido.
- */
 export function MobileCheckout({
   session,
   wallets,

@@ -1,4 +1,3 @@
-/** JSON determinístico: a mesma carga sempre gera a mesma string (para idempotência). */
 export function stableStringify(value: unknown): string {
   if (value === undefined) return "undefined";
   if (value === null || typeof value !== "object") return JSON.stringify(value);

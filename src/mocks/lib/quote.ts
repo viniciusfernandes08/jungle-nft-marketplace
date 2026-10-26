@@ -12,7 +12,6 @@ export const NETWORK_FEES: Record<NetworkId, EthString> = {
   solana: "0.001",
 };
 
-/** Constrói a cotação a partir do catálogo atual. Usada pela API e pela revalidação do pedido. */
 export function buildQuote(nfts: readonly Nft[], input: QuoteInput): Quote {
   const lines: QuoteLine[] = [];
   const issues: QuoteIssue[] = [];

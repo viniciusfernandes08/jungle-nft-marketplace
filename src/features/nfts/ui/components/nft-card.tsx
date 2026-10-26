@@ -49,7 +49,6 @@ export function NftCard({ nft, priority = false }: { nft: Nft; priority?: boolea
   );
 }
 
-/** Mesmas dimensões do card real, para o layout não se deslocar. */
 export function NftCardSkeleton() {
   return (
     <div className="flex flex-col gap-3">

@@ -17,7 +17,6 @@ export function BenefitsSection() {
     const email = String(formData.get("email") ?? "").trim();
     if (!EMAIL.test(email)) return setError("Informe um e-mail válido.");
     setError(undefined);
-    // Fora do escopo: valida, mas não finge que se inscreveu.
     announce("A inscrição na newsletter não está disponível nesta versão.");
   }
 

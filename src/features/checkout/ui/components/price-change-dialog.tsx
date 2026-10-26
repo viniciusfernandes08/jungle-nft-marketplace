@@ -11,10 +11,6 @@ type Props = {
   onCancel: () => void;
 };
 
-/**
- * Revalidação antes de criar o pedido: se a cotação mudou, o usuário precisa
- * confirmar o novo total. O valor oficial continua sendo o do servidor.
- */
 export function PriceChangeDialog({
   previousTotalEth,
   nextTotalEth,

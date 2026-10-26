@@ -9,7 +9,6 @@ import { DESKTOP_QUERY, useMediaQuery } from "@/lib/use-media-query";
 function RootLayout() {
   const isDesktop = useMediaQuery(DESKTOP_QUERY);
   const pathname = useLocation({ select: (location) => location.pathname });
-  // No mobile, estas telas ocupam a tela toda: sem footer nem bottom nav.
   const focusedRoute =
     pathname === "/login" || pathname === "/register" || pathname.startsWith("/nfts/") || pathname.startsWith("/cart") || pathname.startsWith("/checkout");
   const chromeHidden = !isDesktop && focusedRoute;

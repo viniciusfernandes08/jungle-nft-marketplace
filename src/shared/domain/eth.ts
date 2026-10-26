@@ -29,7 +29,6 @@ export function addEth(a: EthString, b: EthString): EthString {
   return weiToEth(ethToWei(a) + ethToWei(b));
 }
 
-/** Lança se o resultado for negativo. */
 export function subEth(a: EthString, b: EthString): EthString {
   return weiToEth(ethToWei(a) - ethToWei(b));
 }
@@ -45,7 +44,6 @@ export function mulEthByInt(value: EthString, quantity: number): EthString {
   return weiToEth(ethToWei(value) * BigInt(quantity));
 }
 
-/** Percentual em basis points (1500 = 15%). Arredonda para baixo, em wei. */
 export function percentOfEth(value: EthString, basisPoints: number): EthString {
   if (!Number.isInteger(basisPoints) || basisPoints < 0) {
     throw new RangeError(`basisPoints deve ser inteiro e não negativo: ${basisPoints}`);
@@ -59,7 +57,6 @@ export function compareEth(a: EthString, b: EthString): -1 | 0 | 1 {
   return x === y ? 0 : x < y ? -1 : 1;
 }
 
-/** Para exibição: preserva toda a precisão, com no mínimo `minFractionDigits` casas. */
 export function formatEth(value: EthString, minFractionDigits = 2): string {
   const [whole, fraction = ""] = weiToEth(ethToWei(value)).split(".");
   const padded = fraction.padEnd(minFractionDigits, "0");

@@ -38,7 +38,6 @@ type TextFieldProps = Omit<ComponentProps<"input">, "id"> & {
   label: string;
   required?: boolean;
   error?: string;
-  /** Sufixo fixo dentro do campo (ex.: .eth). */
   suffix?: string;
 };
 
@@ -110,7 +109,6 @@ type SelectFieldProps = {
   label: string;
   required?: boolean;
   error?: string;
-  /** Texto auxiliar abaixo do campo, quando não há erro. */
   hint?: string;
   placeholder?: string;
   options: readonly SelectOption[];

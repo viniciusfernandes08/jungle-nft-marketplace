@@ -20,10 +20,6 @@ const FALLBACK_MESSAGE: Record<ErrorKind, string> = {
   transient: "Algo deu errado no servidor. Tente novamente.",
 };
 
-/**
- * Converte falhas do Axios em DomainError. Cancelamentos (AbortSignal) passam intactos,
- * para o TanStack Query tratá-los como cancelamento e não como erro.
- */
 export function toDomainError(error: unknown): unknown {
   if (axios.isCancel(error)) return error;
   if (!isAxiosError<ApiErrorBody>(error)) return error;
@@ -50,7 +46,6 @@ export function toDomainError(error: unknown): unknown {
   } satisfies DomainError;
 }
 
-/** Executa a chamada e devolve só o corpo, com erros já traduzidos. */
 export async function request<T>(call: () => Promise<{ data: T }>): Promise<T> {
   try {
     return (await call()).data;

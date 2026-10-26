@@ -9,7 +9,6 @@ export const makeRemoveCartItem = (repo: CartRepository) => (nftId: string, edit
 export const makeSetCoupon = (repo: CartRepository) => (couponCode: string | undefined) =>
   repo.setCoupon(couponCode);
 
-/** Passa os itens do visitante para a conta e só então limpa o carrinho local. */
 export const makeMergeGuestCart =
   (guest: GuestCartRepository, account: CartRepository) => async (): Promise<void> => {
     const { items } = await guest.get();

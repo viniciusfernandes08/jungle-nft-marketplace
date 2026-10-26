@@ -4,10 +4,6 @@ import { useAnnounce } from "./announcer-context";
 
 const DEFAULT_MESSAGE = "Esta página não está disponível nesta versão.";
 
-/**
- * Ação fora do escopo: focável, avisa que não está disponível e não finge sucesso.
- * (É um botão com aria-disabled, não um link, porque não leva a lugar nenhum.)
- */
 export function UnavailableLink({
   children,
   className,

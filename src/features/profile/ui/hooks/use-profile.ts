@@ -18,7 +18,6 @@ export function profileQueryOptions(userId: string) {
   });
 }
 
-/** Perfil do colecionador. Só busca com sessão. */
 export function useProfile() {
   const { data: session } = useSession();
   const userId = session?.user.id;
@@ -51,7 +50,6 @@ export function useUpdateProfile() {
     mutationFn: container.profile.update,
     onSuccess: (profile) => {
       syncProfileCaches(queryClient, profile);
-      // O apelido da carteira principal acompanha o perfil no mock.
       void queryClient.invalidateQueries({ queryKey: ["wallets"] });
     },
   });

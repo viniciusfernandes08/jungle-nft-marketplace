@@ -6,7 +6,6 @@ export type CartItem = {
 
 export type Cart = {
   items: CartItem[];
-  /** Cupom aplicado; só é salvo depois que a cotação o aceita. */
   couponCode?: string;
   updatedAt: string; // ISO
 };

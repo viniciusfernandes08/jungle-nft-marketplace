@@ -3,7 +3,6 @@ import { container } from "@/app/container";
 import { useAnnounce } from "@/components/announcer-context";
 import { useSession } from "@/features/auth/ui/hooks/use-session";
 
-/** Chave por usuário: favoritos de uma sessão nunca aparecem em outra. */
 export const favoriteKeys = {
   all: ["favorites"] as const,
   byUser: (userId: string) => [...favoriteKeys.all, userId] as const,
@@ -21,10 +20,6 @@ export function useFavorites() {
 
 type ToggleInput = { nftId: string; favorite: boolean };
 
-/**
- * Atualização otimista: o coração muda na hora; se a API falhar, o estado volta
- * ao que era e o usuário é avisado. Depois sempre reconcilia com o servidor.
- */
 export function useToggleFavorite() {
   const queryClient = useQueryClient();
   const announce = useAnnounce();

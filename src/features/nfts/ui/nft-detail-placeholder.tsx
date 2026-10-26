@@ -4,7 +4,6 @@ import { errorMessage } from "@/lib/error-message";
 import { formatEth } from "@/shared/domain/eth";
 import { useNft } from "./hooks/use-nft";
 
-/** Provisório até a etapa de detalhe: já resolve acesso direto, 404 e erro com retry. */
 export function NftDetailPlaceholder({ nftId }: { nftId: string }) {
   const { data, error, isPending, refetch } = useNft(nftId);
 

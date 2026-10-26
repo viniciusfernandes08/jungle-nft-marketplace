@@ -19,12 +19,10 @@ export const makeLogin =
     return session;
   };
 
-/** Sair sempre funciona localmente, mesmo que a API esteja fora do ar. */
 export const makeLogout = (repo: AuthRepository, tokens: TokenStore) => async (): Promise<void> => {
   try {
     await repo.logout();
   } catch {
-    // melhor esforço: a sessão local é descartada de qualquer forma
   } finally {
     tokens.clear();
   }

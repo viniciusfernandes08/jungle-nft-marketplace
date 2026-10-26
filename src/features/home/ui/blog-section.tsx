@@ -8,7 +8,6 @@ const POSTS = [
   { date: "15 de setembro", read: 2, title: "Como proteger sua carteira", text: "Proteja sua carteira, seus ativos e sua identidade.", image: nftImages.golden },
 ] as const;
 
-/** Conteúdo editorial: fora do escopo funcional, então "Ler mais" avisa que não está disponível. */
 export function BlogSection() {
   return (
     <section aria-labelledby="blog-titulo" className="mx-auto w-full max-w-[1200px] px-4 py-10 sm:px-6 xl:px-0">

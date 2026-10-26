@@ -2,10 +2,6 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 import { patchSearch, searchToQuery, validateCatalogSearch, type CatalogSearch } from "../catalog-search";
 
-/**
- * A URL é a fonte de verdade: busca, filtros, ordenação e página sobrevivem a refresh e histórico.
- * Não depende de estar na rota "/": a Home também é renderizada atrás do modal de login.
- */
 export function useCatalogSearch() {
   const raw = useSearch({ strict: false });
   const navigate = useNavigate();

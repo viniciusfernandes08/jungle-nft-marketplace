@@ -51,7 +51,6 @@ type AccountFieldProps = Omit<ComponentProps<"input">, "id"> & {
   required?: boolean;
   labelHidden?: boolean;
   error?: string;
-  /** Layout compacto usado nos formulários de carteira. */
   dense?: boolean;
 };
 
@@ -92,7 +91,6 @@ type AccountSelectProps = Omit<ComponentProps<"select">, "id"> & {
   labelHidden?: boolean;
   error?: string;
   options: readonly SelectOption[];
-  /** Layout compacto usado nos formulários de carteira. */
   dense?: boolean;
 };
 

@@ -11,7 +11,7 @@ import { router } from "./router";
  */
 export function setupSessionExpiry() {
   onHttpUnauthorized(() => {
-    if (!container.auth.tokens.get()) return; // já tratado por outra requisição em paralelo
+    if (!container.auth.tokens.get()) return;
     container.auth.tokens.clear();
     endSession(queryClient);
     announceBus.emit("Sua sessão expirou. Entre novamente.");

@@ -58,7 +58,6 @@ const FORM_FIELDS = [
   "note",
 ] as const satisfies readonly (keyof CheckoutFormValues)[];
 
-/** Converte o caminho do erro da API para o nome do campo do formulário. */
 function formFieldFor(path: string): keyof CheckoutFormValues | undefined {
   const field = path.replace(/^collector\./, "");
   const mapped =
@@ -119,7 +118,6 @@ export function DesktopCheckout({
   const walletId = useWatch({ control, name: "walletId" });
   const walletType = useWatch({ control, name: "walletType" });
 
-  // A lista de provedores e o select "Tipo de carteira" são o mesmo estado.
   useEffect(() => {
     if (walletType !== provider) setValue("walletType", provider, { shouldValidate: true });
   }, [provider, walletType, setValue]);

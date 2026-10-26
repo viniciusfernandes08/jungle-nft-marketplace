@@ -3,7 +3,6 @@ import type { NftEdition } from "../../../domain/nft";
 
 type Props = { editions: NftEdition[]; selectedId: string; onSelect: (id: string) => void };
 
-/** Edições esgotadas ficam desabilitadas, riscadas e anunciadas como "esgotada". */
 export function EditionPicker({ editions, selectedId, onSelect }: Props) {
   return (
     <div role="radiogroup" aria-label="Edição" className="flex flex-wrap gap-2">

@@ -1,4 +1,3 @@
-/** Só caminhos internos; nunca URLs externas, e nunca as próprias telas de acesso (evita laço). */
 export function isSafeRedirect(value: string): boolean {
   return (
     value.startsWith("/") &&

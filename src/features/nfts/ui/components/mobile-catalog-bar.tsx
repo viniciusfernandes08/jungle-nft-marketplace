@@ -5,7 +5,6 @@ import { FiltersDialog } from "./filters-dialog";
 import { FiltersPanel } from "./filters-panel";
 import { SearchField } from "./search-field";
 
-/** Busca e filtros no topo do mobile/tablet (no desktop vivem no header e na sidebar). */
 export function MobileCatalogBar() {
   const { search, query, update } = useCatalogSearch();
   const facets = useNftFacets();

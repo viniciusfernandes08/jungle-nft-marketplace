@@ -216,7 +216,6 @@ function NftDetailContent({ nft }: { nft: Nft }) {
   );
 }
 
-/** Mesmas dimensões da página real, para o layout não se deslocar. */
 function NftDetailSkeleton() {
   return (
     <div className={shell} aria-busy="true" aria-label="Carregando NFT">

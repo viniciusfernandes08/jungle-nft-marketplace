@@ -11,10 +11,6 @@ export type WalletConnectionState =
   | { status: "connected"; providerId: WalletProviderId }
   | { status: "refused"; providerId: WalletProviderId; reason: string };
 
-/**
- * Conexão simulada com o provedor. O servidor pode devolver `refused`;
- * falhas de rede viram o mesmo estado, com a mensagem traduzida.
- */
 export function useWalletConnection() {
   const connectMutation = useMutation<WalletConnectionResult, Error, WalletProviderId>({
     mutationFn: (providerId) => container.walletConnection.connect(providerId),

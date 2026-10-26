@@ -22,10 +22,8 @@ const bodySchema = z.object({
   network: z.enum(networkIds).optional(),
 });
 
-/** Quantas cotações ficam guardadas para revalidar pedidos. */
 const MAX_STORED_QUOTES = 50;
 
-/** Cotação pública: vale para visitante e logado. A cotação da API é a referência do pedido. */
 export const quoteHandlers = [
   http.post(
     "/api/quote",

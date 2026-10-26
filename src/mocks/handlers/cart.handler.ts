@@ -24,7 +24,6 @@ function findEdition(db: MockDb, nftId: string, editionId: string) {
   return nft?.editions.find((e) => e.id === editionId);
 }
 
-/** Valida existência e disponibilidade; devolve a resposta de erro ou null se estiver ok. */
 function checkStock(db: MockDb, item: CartItem) {
   const edition = findEdition(db, item.nftId, item.editionId);
   if (!edition) return apiError(404, "NOT_FOUND", "NFT ou edição não encontrados.");
@@ -116,7 +115,6 @@ export const cartHandlers = [
     }),
   ),
 
-  // Itens do visitante: o que não existe é ignorado e o resto é limitado ao estoque.
   http.post(
     "/api/cart/merge",
     withScenario(async ({ request }) => {
