@@ -9,7 +9,7 @@ import { useCartQuote } from "@/features/cart/ui/hooks/use-cart-quote";
 import { hasQuoteChanged, type Quote } from "@/features/cart/domain/quote";
 import type { Session } from "@/features/auth/domain/session";
 import type { Collector, CreateOrderInput } from "@/features/orders/domain/order";
-import { orderKeys } from "@/features/orders/ui/hooks/order-keys";
+import { orderKeys } from "@/features/orders/ui/constants/order-keys";
 import type { Wallet, WalletProviderId } from "@/features/wallets/domain/wallet";
 import { useWalletConnection } from "@/features/wallets/ui/hooks/use-wallet-connection";
 import { useWallets } from "@/features/wallets/ui/hooks/use-wallets";

@@ -2,10 +2,10 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useRef, type ReactNode } from "react";
 import { container } from "@/app/container";
 import { useSession } from "@/features/auth/ui/hooks/use-session";
-import { nftKeys } from "@/features/nfts/ui/hooks/nft-keys";
+import { nftKeys } from "@/features/nfts/ui/constants/nft-keys";
 import type { Nft } from "@/features/nfts/domain/nft";
 import type { Order } from "@/features/orders/domain/order";
-import { orderKeys } from "@/features/orders/ui/hooks/order-keys";
+import { orderKeys } from "@/features/orders/ui/constants/order-keys";
 import { rememberEvent, shouldApplyEvent } from "../domain/event-rules";
 
 export function RealtimeProvider({ children }: { children: ReactNode }) {

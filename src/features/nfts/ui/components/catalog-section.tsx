@@ -2,23 +2,17 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import { errorMessage } from "@/lib/error-message";
-import type { NftTab } from "../../domain/nft-query";
 import { patchSearch } from "../catalog-search";
 import { useCatalogSearch } from "../hooks/use-catalog-search";
 import { useNftFacets } from "../hooks/use-nft-facets";
 import { useNftList } from "../hooks/use-nft-list";
 import { FeaturedNftCard } from "./featured-nft-card";
 import { FiltersPanel } from "./filters-panel";
-import { SORT_OPTIONS } from "./sort-options";
+import { SORT_OPTIONS } from "@/features/nfts/ui/constants/sort-options";
 import { NftCard, NftCardSkeleton } from "./nft-card";
 import { Pagination } from "./pagination";
 import type { NftSort } from "../../domain/nft-query";
-
-const TABS: { value: NftTab; label: string }[] = [
-  { value: "all", label: "Todos os NFTs" },
-  { value: "new", label: "Novos lançamentos" },
-  { value: "trending", label: "Em alta" },
-];
+import { TABS } from "../constants/tabs";
 
 export function CatalogSection() {
   const { search, query, update, clear } = useCatalogSearch();

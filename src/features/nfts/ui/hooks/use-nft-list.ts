@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { container } from "@/app/container";
 import type { NftListQuery } from "../../domain/nft-query";
-import { nftKeys } from "./nft-keys";
+import { nftKeys } from "@/features/nfts/ui/constants/nft-keys";
 
 export function useNftList(query: NftListQuery) {
   return useQuery({

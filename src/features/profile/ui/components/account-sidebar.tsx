@@ -4,22 +4,13 @@ import { UnavailableLink } from "@/components/unavailable-link";
 import type { IconName } from "@/config/assets";
 import { useLogout } from "@/features/auth/ui/hooks/use-auth-mutations";
 import { cn } from "@/lib/utils";
+import { ACCOUNT_ITEMS } from "@/features/profile/ui/constants/account-items";
 
 type AccountItem = {
   label: string;
   icon: IconName;
   to?: "/profile" | "/wallets";
 };
-
-const ACCOUNT_ITEMS: AccountItem[] = [
-  { label: "Dados do perfil", icon: "user", to: "/profile" },
-  { label: "Carteiras", icon: "wallet", to: "/wallets" },
-  { label: "Atividade", icon: "cart" },
-  { label: "Lista de interesse", icon: "heart-filled" },
-  { label: "Ofertas", icon: "tag" },
-  { label: "Arquivos baixados", icon: "download" },
-  { label: "Suporte", icon: "support" },
-];
 
 const itemClass =
   "flex h-[45px] w-full items-center gap-2.5 border-l-[6px] border-transparent pl-3.5 pr-3 text-small text-muted-foreground transition-colors";

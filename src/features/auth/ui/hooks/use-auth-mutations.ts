@@ -29,7 +29,6 @@ export function useLogout() {
     onSettled: () => {
       endSession(queryClient);
       announce("Você saiu da sua conta.");
-      // Reavalia os guards: rotas privadas redirecionam para o login.
       void router.invalidate();
     },
   });

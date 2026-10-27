@@ -17,19 +17,7 @@ import {
   AccountField,
   AccountSelect,
 } from "@/features/profile/ui/components/account-fields";
-
-const WALLET_FIELDS = [
-  "displayName",
-  "nickname",
-  "profileName",
-  "email",
-  "address",
-  "secondaryAddress",
-  "ensName",
-  "referralCode",
-  "network",
-  "provider",
-] as const;
+import { WALLET_FIELDS } from "@/features/wallets/ui/constants/wallet-fields";
 
 type FallbackProfile = {
   fullName: string;

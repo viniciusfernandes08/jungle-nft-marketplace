@@ -3,7 +3,7 @@ import type { NftSort } from "../../domain/nft-query";
 import type { FacetItem, NftFacets } from "../../domain/nft-repository";
 import type { CatalogSearch } from "../catalog-search";
 import { PriceRange } from "./price-range";
-import { SORT_OPTIONS } from "./sort-options";
+import { SORT_OPTIONS } from "@/features/nfts/ui/constants/sort-options";
 
 type Props = {
   facets: NftFacets | undefined;

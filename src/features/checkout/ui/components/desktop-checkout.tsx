@@ -21,6 +21,7 @@ import { CheckoutSummary } from "./checkout-summary";
 import { SelectField, TextAreaField, TextField, type SelectOption } from "./field";
 import { ProviderList } from "./provider-list";
 import { providerOrder } from "../provider-order";
+import { FORM_FIELDS } from "../constants/form-fields";
 
 export type SubmitOrderResult = "created" | "review";
 export type SubmitOrder = (collector: Collector, walletId: string) => Promise<SubmitOrderResult>;
@@ -43,20 +44,6 @@ type Props = {
   onDisconnect: () => void;
   submitOrder: SubmitOrder;
 };
-
-const FORM_FIELDS = [
-  "displayName",
-  "username",
-  "network",
-  "profileName",
-  "walletId",
-  "secondaryAddress",
-  "walletType",
-  "referralCode",
-  "email",
-  "ensLabel",
-  "note",
-] as const satisfies readonly (keyof CheckoutFormValues)[];
 
 function formFieldFor(path: string): keyof CheckoutFormValues | undefined {
   const field = path.replace(/^collector\./, "");

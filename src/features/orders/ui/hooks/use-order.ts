@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { container } from "@/app/container";
-import { orderKeys } from "./order-keys";
+import { orderKeys } from "@/features/orders/ui/constants/order-keys";
 
 export function useOrder(id: string | undefined) {
   return useQuery({
