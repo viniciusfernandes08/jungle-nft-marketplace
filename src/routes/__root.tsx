@@ -12,6 +12,7 @@ function RootLayout() {
   const focusedRoute =
     pathname === "/login" || pathname === "/register" || pathname.startsWith("/nfts/") || pathname.startsWith("/cart") || pathname.startsWith("/checkout");
   const chromeHidden = !isDesktop && focusedRoute;
+  const footerHidden = pathname === "/profile" || pathname === "/wallets";
 
   return (
     <div className="flex min-h-svh flex-col">
@@ -25,7 +26,7 @@ function RootLayout() {
       <main id="conteudo" className={chromeHidden ? "flex-1" : "flex-1 pb-28 lg:pb-0"}>
         <Outlet />
       </main>
-      {!chromeHidden && <SiteFooter />}
+      {!chromeHidden && !footerHidden && <SiteFooter />}
       {!chromeHidden && <MobileNav />}
     </div>
   );
