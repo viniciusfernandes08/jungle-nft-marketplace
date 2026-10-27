@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Icon } from "@/components/icon";
 import type { IconName } from "@/config/assets";
 import { UnavailableLink } from "@/components/unavailable-link";
+import { BenefitsSection } from "@/features/home/ui/benefits-section";
 
 const COLUMNS = [
   { title: "Meu perfil", links: ["Meu perfil", "Minha coleção", "Atividade", "Estúdio do criador", "Lista de interesse"] },
@@ -28,7 +29,8 @@ const heading = "mb-4 text-body font-bold";
 
 export function SiteFooter() {
   return (
-    <footer className="mx-auto w-full max-w-[1200px] px-4 pb-8 sm:px-6 xl:px-0">
+    <footer className="mx-auto w-full max-w-[1200px] px-4 pb-8 sm:px-6 xl:px-0 pt-8">
+      <BenefitsSection />
       <div className="grid gap-4 bg-secondary p-6 text-small sm:grid-cols-2 lg:grid-cols-4 lg:items-center">
         <p className="text-micro font-bold tracking-widest">KURIO</p>
         <p>Feito para colecionadores, criadores e cultura</p>

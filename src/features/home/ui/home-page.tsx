@@ -13,7 +13,6 @@ export function HomePage() {
       <CatalogSection />
       <PromoBanners />
       <BlogSection />
-      <BenefitsSection />
     </>
   );
 }

@@ -21,8 +21,8 @@ export function BenefitsSection() {
   }
 
   return (
-    <section aria-label="Benefícios e newsletter" className="mx-auto w-full max-w-[1200px] px-4 py-8 sm:px-6 xl:px-0">
-      <div className="grid gap-8 rounded-lg bg-card p-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-primary/30">
+    <section aria-label="Benefícios e newsletter" className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 xl:px-0">
+      <div className="grid gap-8 bg-card p-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-primary/30">
         {BENEFITS.map((b) => (
           <div key={b.title} className="flex flex-col gap-3 lg:px-6">
             <span aria-hidden="true" className="grid size-14 place-items-center rounded-full bg-primary text-subheading font-bold text-primary-foreground">
